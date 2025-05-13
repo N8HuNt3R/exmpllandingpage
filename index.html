@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order iPhone 16 Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #1c1c1c;
+      color: white;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: #2c2c2c;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .image-box, .content-box {
+      flex: 1 1 100%;
+      padding: 20px;
+    }
+    .image-box img {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .summary {
+      margin-top: 10px;
+      cursor: pointer;
+      color: #00aeff;
+      text-decoration: underline;
+    }
+    .summary-content {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: #444;
+      color: white;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quantity-control button {
+      background: #444;
+      color: white;
+      border: 1px solid #777;
+      padding: 6px 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .addons {
+      margin-top: 10px;
+    }
+    .addon-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .addon-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+    .total {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    button.order {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .image-box {
+        flex: 1 1 40%;
+      }
+      .content-box {
+        flex: 1 1 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="image-box">
+    <img src="https://www.apple.com/v/iphone-16-pro/f/images/overview/product-viewer/iphone-pro/all_colors__fdpduog7urm2_large_2x.jpg" alt="iPhone 16 Pro">
+  </div>
+  <div class="content-box">
+    <h1>iPhone 16 Pro <span style="font-size: 20px; font-weight: bold;">— 120000 BDT</span></h1>
+    <p>The next-generation iPhone with groundbreaking performance, a sleek titanium design, and an advanced camera system.</p>
+
+    <div class="summary" onclick="toggleSummary()">See more</div>
+    <div class="summary-content" id="full-summary">
+      iPhone 16 Pro features the powerful A18 Pro chip, all-day battery life, a stunning Super Retina XDR display, and the most advanced Pro camera system ever on an iPhone. With satellite connectivity, improved thermal design, and iOS 18, it's engineered for both power users and professionals.
+    </div>
+
+    <label for="quantity">Quantity</label>
+    <div class="quantity-control">
+      <button onclick="changeQty(-1)">−</button>
+      <input type="number" id="quantity" min="0" value="1" onchange="calculateTotal()">
+      <button onclick="changeQty(1)">+</button>
+    </div>
+
+    <label>Add-ons (Optional)</label>
+    <div class="addons">
+      <div class="addon-item">
+        <input type="checkbox" id="airpod" onchange="calculateTotal()">
+        <img src="https://www.apple.com/v/airpods-4/e/images/overview/bento-gallery/bento_case_open__63kccmu775u6_large_2x.jpg" alt="AirPods">
+        <label for="airpod">AirPods (+8000 BDT)</label>
+      </div>
+      <div class="addon-item">
+        <input type="checkbox" id="charger" onchange="calculateTotal()">
+        <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/HR1W2?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=bWFiL0pYL0M1dmlIT29maVNJM2dwZ2tuVHYzMERCZURia3c5SzJFOTlPZzA2QlRtR1lLbmIyMmJQb1p2RUhpUlRpWGdpRW5JQmF5endDdGxIZ21ENXc" alt="Charger">
+        <label for="charger">Charger (+3000 BDT)</label>
+      </div>
+    </div>
+
+    <label for="delivery">Delivery Area</label>
+    <select id="delivery" onchange="calculateTotal()">
+      <option value="100">Inside Dhaka (+100 BDT)</option>
+      <option value="150">Outside Dhaka (+150 BDT)</option>
+    </select>
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" placeholder="01XXXXXXXXX">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" placeholder="Your full address">
+
+    <div class="total" id="totalPrice">Total: 120100 BDT</div>
+
+    <button class="order" onclick="sendToWhatsApp()">Order via WhatsApp</button>
+  </div>
+</div>
+
+<!-- ... (HTML head ও পূর্বের কোড একই থাকবে, শুধু নিচের JS অংশটা সম্পূর্ণ কোডে বসিয়ে দিন) -->
+
+<script>
+  const productPrice = 120000;
+  const airpodPrice = 8000;
+  const chargerPrice = 3000;
+
+  function toggleSummary() {
+    const content = document.getElementById('full-summary');
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function changeQty(amount) {
+    const qtyInput = document.getElementById('quantity');
+    let qty = parseInt(qtyInput.value);
+    qty = isNaN(qty) ? 0 : qty + amount;
+    qty = Math.max(0, qty); // Allow zero
+    qtyInput.value = qty;
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    const qty = parseInt(document.getElementById('quantity').value) || 0;
+    const delivery = parseInt(document.getElementById('delivery').value);
+    const airpod = document.getElementById('airpod').checked ? airpodPrice : 0;
+    const charger = document.getElementById('charger').checked ? chargerPrice : 0;
+    const total = (productPrice + airpod + charger) * qty + delivery;
+
+    // Update total price display
+    document.getElementById('totalPrice').innerText = `Total: ${total} BDT`;
+
+    // Disable/Enable order button
+    const orderBtn = document.querySelector('.order');
+    orderBtn.disabled = qty === 0;
+    orderBtn.style.backgroundColor = qty === 0 ? '#666' : '#28a745';
+    orderBtn.style.cursor = qty === 0 ? 'not-allowed' : 'pointer';
+  }
+
+  function sendToWhatsApp() {
+    const qty = parseInt(document.getElementById('quantity').value);
+    if (qty === 0) {
+      alert("Please select at least 1 quantity to place an order.");
+      return;
+    }
+    const deliveryCharge = parseInt(document.getElementById('delivery').value);
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const airpod = document.getElementById('airpod').checked;
+    const charger = document.getElementById('charger').checked;
+    const selectedAddons = [];
+    if (airpod) selectedAddons.push("AirPods (+8000 BDT)");
+    if (charger) selectedAddons.push("Charger (+3000 BDT)");
+    const total = (productPrice + (airpod ? airpodPrice : 0) + (charger ? chargerPrice : 0)) * qty + deliveryCharge;
+
+    const message = `Order Details:%0AProduct: iPhone 16 Pro%0AQuantity: ${qty}%0AAdd-ons: ${selectedAddons.join(", ") || 'None'}%0ADelivery: ${deliveryCharge} BDT%0ATotal: ${total} BDT%0A---%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
+    const whatsappURL = `https://wa.me/8801685144764?text=${message}`;
+    window.open(whatsappURL, '_blank');
+  }
+
+  // Initialize total on page load
+  window.onload = calculateTotal;
+</script>
+
+</script>
+</body>
+</html>
